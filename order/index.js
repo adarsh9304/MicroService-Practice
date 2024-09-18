@@ -1,7 +1,10 @@
 const express = require('express');
+const { ReceivedFromCustomer } = require('./receivedMsgCust');
 
 const app = express();
 app.use(express.json());
+
+ReceivedFromCustomer()
 
 app.get('/order-temp',(req,res)=>{
   res.send('Response come from Order and req from customer')
