@@ -1,0 +1,49 @@
+version: '3'
+services:
+  customer-service:
+    container_name: custser
+    build: ./customer
+    ports:
+      - "3001:3001"
+    environment:
+      - RABBITMQ_URL=amqp://rabbitmq
+    depends_on:
+      - rabbitmq
+    networks:
+      - microservices-network
+
+  orders-service:
+    container_name: ordser
+    build: ./order
+    ports:
+      - "3002:3002"
+    environment:
+      - RABBITMQ_URL=amqp://rabbitmq
+    depends_on:
+      - rabbitmq
+    networks:
+      - microservices-network
+
+  gateway:
+    container_name: gateser
+    build: ./gateway
+    ports:
+      - "3000:3000"
+    depends_on:
+      - customer-service
+      - orders-service
+    networks:
+      - microservices-network
+
+  rabbitmq:
+    container_name: rabser
+    image: "rabbitmq:3-management"
+    ports:
+      - "15672:15672" 
+      - "5672:5672"   
+    networks:
+      - microservices-network
+
+networks:
+  microservices-network:
+    driver: bridge

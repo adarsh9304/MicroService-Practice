@@ -2,7 +2,7 @@ const amqplib=require('amqplib');
 
 async function sendMessageToOrder(message){
    try{
-     const rabbitMQ='amqp://localhost';
+     const rabbitMQ='amqp://rabbitmq:5672'
      const queueName='order_queue';
     
      const connection=await amqplib.connect(rabbitMQ);
