@@ -6,7 +6,7 @@ services:
     ports:
       - "3001:3001"
     environment:
-      - RABBITMQ_URL=amqp://rabbitmq
+      - RABBITMQ_URL=amqp://rabbitmq:5672
     depends_on:
       - rabbitmq
     networks:
@@ -18,7 +18,7 @@ services:
     ports:
       - "3002:3002"
     environment:
-      - RABBITMQ_URL=amqp://rabbitmq
+      - RABBITMQ_URL=amqp://rabbitmq:5672
     depends_on:
       - rabbitmq
     networks:
