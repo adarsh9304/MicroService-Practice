@@ -2,7 +2,7 @@ const amqplib=require('amqplib');
 
 async function sendMessageToOrder(message){
    try{
-     const rabbitMQ='amqp://rabbitmq:5672'
+    const rabbitMQ = 'amqp://3.110.188.66:5672';
      const queueName='order_queue';
     
      const connection=await amqplib.connect(rabbitMQ);
@@ -14,10 +14,6 @@ async function sendMessageToOrder(message){
 
      channel.sendToQueue(queueName,Buffer.from(message));
      console.log('sent message is:',message)
-
-     setTimeout(() => {
-        connection.close()
-     }, 500);
 
    }
    catch(err){

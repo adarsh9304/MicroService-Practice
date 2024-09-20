@@ -13,7 +13,6 @@ services:
       - microservices-network
 
   orders-service:
-    container_name: ordser
     build: ./order
     ports:
       - "3002:3002"
@@ -25,7 +24,6 @@ services:
       - microservices-network
 
   gateway:
-    container_name: gateser
     build: ./gateway
     ports:
       - "3000:3000"
