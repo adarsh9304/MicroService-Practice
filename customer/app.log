@@ -1,0 +1,8 @@
+{"level":"info","message":"Customer Service started on port 3001","service":"customer-service","timestamp":"2024-09-26T10:10:23.410Z"}
+{"level":"info","message":"Inside call order","service":"customer-service","timestamp":"2024-09-26T10:11:26.495Z"}
+{"customerId":"2","level":"info","message":"Creating order","orderId":"14","service":"customer-service","status":"OrderCreated","timestamp":"2024-09-26T10:11:48.542Z"}
+{"level":"info","message":"Customer Service started on port 3001","service":"customer-service","timestamp":"2024-09-26T10:14:39.462Z"}
+{"level":"info","message":"Customer Service started on port 3001","service":"customer-service","timestamp":"2024-09-26T10:14:45.624Z"}
+{"level":"info","message":"Customer Service started on port 3001","service":"customer-service","timestamp":"2024-09-26T10:14:57.191Z"}
+{"level":"info","message":"Customer Service started on port 3001","service":"customer-service","timestamp":"2024-09-26T10:29:33.465Z"}
+{"level":"info","message":"Customer Service started on port 3001","service":"customer-service","timestamp":"2024-09-26T10:29:50.952Z"}
