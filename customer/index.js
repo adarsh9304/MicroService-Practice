@@ -1,30 +1,15 @@
 const express = require("express");
 const logger = require("./logger");
-const http = require("http");
 const axios = require("axios");
 const { sendMessageToOrder, sendOrderToQueue } = require("./sendOrder");
 const { listenOrderResponse } = require("./listen_order_res");
-const { Server } = require("socket.io");
+const { getSocketIO, initiateSocketServer } = require("./socket_connection");
 
 const app = express();
 app.use(express.json());
-// binding express app instance as http server to socket server
-const server = http.createServer(app);
 
-server.listen(3005); // socket server listen  ws://localhost:3005
-
-const io = new Server(server, {
-  cors: {
-    origin: "*"
-  }
-});
-
-io.on("connection", (socket) => {
-  console.log("Customer service connected to socket");
-  socket.on("status-update-response", (data) => {
-    console.log("Data from service B", data);
-  });
-});
+const io = getSocketIO(app);
+initiateSocketServer(io);
 
 app.get("/call-order", async (req, res) => {
   logger.info({
