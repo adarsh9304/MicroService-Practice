@@ -1,25 +1,14 @@
 const express = require('express');
 const logger = require('./logger');
-const http=require('http');
-const {Server}=require('socket.io')
-const {io:Client}=require('socket.io-client')
 const { listenForOrders } = require('./listen_for_order');
+const { orderSocket } = require('./customer_socket');
 
 const app = express();
 app.use(express.json());
 
-const customerSocket=Client('ws://localhost:3005');
-
-customerSocket.on('connect', () => {
-  console.log('Order service connected to customer service socket');
-});
-
-customerSocket.on('status-update',(data)=>{
-  console.log('Received status update from customer service:',data)
-  customerSocket.emit('status-update-response',{received:true})
-})
-
 listenForOrders();
+orderSocket();
+
 
 app.get('/order-temp', (req, res) => {
   logger.info({

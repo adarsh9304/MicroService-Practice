@@ -32,10 +32,10 @@ app.get("/update-status-to-complete-socket", async (req, res) => {
     .json({ message: "Status updated to complete and sent via socket" });
 });
 
-app.get("/update-status-to-complete-webhook", async (req, res) => {
+app.get("/", async (req, res) => {
   console.log("inside controller of webhook");
 
-  // for loop for subscribed clients and will send event to all
+  // for loop for subscrupdate-status-to-complete-webhookibed clients and will send event to all
   // brainstroming on usecases
   // actions which client wants , give listing to them
   // webhoock table
