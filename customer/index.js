@@ -8,8 +8,8 @@ const { getSocketIO, initiateSocketServer } = require("./socket_connection");
 const app = express();
 app.use(express.json());
 
-const io = getSocketIO(app);
-initiateSocketServer(io);
+// const io = getSocketIO(app);
+// initiateSocketServer(io);
 
 app.get("/call-order", async (req, res) => {
   logger.info({

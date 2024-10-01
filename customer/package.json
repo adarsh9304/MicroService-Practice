@@ -14,6 +14,7 @@
     "body-parser": "^1.20.3",
     "express": "^4.21.0",
     "mongoose": "^8.6.2",
+    "opossum": "^8.1.4",
     "socket.io": "^4.8.0",
     "winston": "^3.14.2",
     "winston-logstash": "^1.2.1",
