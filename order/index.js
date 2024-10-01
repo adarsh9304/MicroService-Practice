@@ -2,12 +2,14 @@ const express = require('express');
 const logger = require('./logger');
 const { listenForOrders } = require('./listen_for_order');
 const { orderSocket } = require('./customer_socket');
+const { listenOrderCB } = require('./circuit_breaker');
 
 const app = express();
 app.use(express.json());
 
-listenForOrders();
-orderSocket();
+// listenForOrders();
+listenOrderCB()
+// orderSocket();
 
 
 app.get('/order-temp', (req, res) => {
