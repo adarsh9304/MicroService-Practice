@@ -1,0 +1,30 @@
+Data Encryption
+
+You mentioned using encryption algorithms like SHA or MD5, but these are hashing algorithms and not encryption algorithms. Hashing is used for integrity checks or password storage, not for encrypting sensitive data like payment information.
+Instead, you should use AES (Advanced Encryption Standard), which is widely used for encrypting data at rest.
+You correctly suggested that tokenization (e.g., storing tokenized credit card data instead of actual card numbers) is a secure way to store payment information. It’s also important to mention compliance with standards like PCI-DSS for handling payment data.
+
+
+Encryption in Transit:
+
+You talked about encrypting data between services (service A to service B) using a symmetric encryption strategy. This is good, but it’s crucial to emphasize the role of TLS (Transport Layer Security), which is a standard protocol for securing data in transit. This ensures that data between services is encrypted and protected from interception.
+The pair of keys you mentioned can be clarified further. If you are referring to symmetric encryption, there’s only one key. If you are referring to asymmetric encryption, this uses public/private key pairs for secure data transmission.
+
+
+
+Authentication and Authorization:
+
+You mentioned using JWT for authentication. This is a good choice for securing inter-service communication. JWTs can carry signed tokens (which are tamper-proof) to authenticate and authorize requests.
+However, for a financial system, you should also mention using OAuth 2.0 for delegated authorization. OAuth provides a framework for handling access between different services, especially when third-party services are involved.
+Using short-lived access tokens and refresh tokens in a financial system ensures better security by limiting the time a token is valid.
+
+
+
+Encryption at Rest:
+
+You mentioned MongoDB’s enterprise version for encryption at rest. This is a good example, but it would be more comprehensive to explain the use of database encryption mechanisms (like transparent data encryption - TDE) that can encrypt data at the storage level.
+It’s important to discuss key management as well. Using solutions like AWS KMS (Key Management Service) to securely manage encryption keys is critical for ensuring the security of encrypted data.
+
+
+
+

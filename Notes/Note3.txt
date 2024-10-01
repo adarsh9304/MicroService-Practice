@@ -1,0 +1,22 @@
+The Saga pattern consists of a series of local transactions with compensating transactions to roll back in case of failures. It would be helpful to describe this in more depth:
+Each service completes a local transaction and publishes an event for the next service to continue the workflow.
+If a failure occurs, the Saga triggers compensating transactions to undo the previous steps.
+It would be better if you highlighted the two types of Sagas: choreography (event-driven) and orchestration (centralized control).
+
+
+Handling Failures:
+
+Your response to failure scenarios is a bit too brief. You mentioned "revert whole process," but this could be elaborated. In a Saga pattern, failure handling is done by triggering compensating transactions. You need to clearly state how you would:
+Detect the failure.
+Trigger a compensating transaction to reverse actions already completed.
+You should also explain that the Saga pattern is eventual consistency. Services are not immediately consistent but reach consistency over time, which is a trade-off for scalability and availability.
+
+
+You chose the Saga pattern, which is a good option for microservices. However, you should mention why you wouldn’t use two-phase commit (2PC). For example:
+2PC is not ideal for distributed systems because it locks resources across services, leading to potential performance bottlenecks.
+Sagas are more suitable for microservices because they are non-blocking, scalable, and more resilient to failure.
+You could also mention that eventual consistency is often preferred in microservices over strong consistency, especially for long-running transactions.
+
+
+You could have discussed how to ensure idempotency in Saga compensating actions to avoid problems caused by repeated transactions.
+You should mention distributed tracing for monitoring transactions across services, which is essential to track the flow of events in a Saga.
